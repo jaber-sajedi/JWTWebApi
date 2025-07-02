@@ -4,7 +4,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using JWTWebApiPerRequest.Services;
-using Microsoft.AspNetCore.Authorization; // در صورت نیاز به namespace
+using Microsoft.AspNetCore.Authorization;
+using JWTWebApiPerRequest.Controllers; // در صورت نیاز به namespace
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,21 +84,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Endpoint: دریافت توکن
-app.MapPost("/token", (JwtService jwtService, IMemoryCache cache) =>
-{
-    var token = jwtService.GenerateToken("user1", out var jti);
-
-    cache.Set(jti, true, new MemoryCacheEntryOptions
-    {
-        AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(6),
-        Size = 1
-    });
-
-    return Results.Ok(new { token });
-});
-
-// Endpoint: محافظت‌شده
-app.MapGet("/secure", () => "شما مجاز هستید!")
-   .RequireAuthorization("JtiPolicy");
+// ثبت مسیرهای Minimal API
+MinimalApiEndpoints.Register(app);
 
 app.Run();

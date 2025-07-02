@@ -1,6 +1,8 @@
-﻿using JWTWebApiRSA.Models;
+﻿using JWTWebApiRSA;
+using JWTWebApiRSA.Models;
 using JWTWebApiRSA.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "JWT API", Version = "v1" });
-
+    c.SchemaFilter<LoginModelExampleFilter>();
     // تعریف امنیت JWT
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
