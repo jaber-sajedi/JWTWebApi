@@ -31,8 +31,8 @@ namespace JWTWebApi.Controllers
 
                 // ساخت توکن
                 var token = new JwtSecurityToken(
-                    issuer: "yourIssuer",        // صادرکننده توکن
-                    audience: "yourAudience",    // گیرنده مجاز توکن
+                     issuer: "https://localhost:7265",
+                          audience: "https://localhost",
                     claims: claims,              // ادعاهای کاربر
                     expires: DateTime.UtcNow.AddHours(1), // مدت اعتبار توکن (۱ ساعت)
                     signingCredentials: creds    // امضای دیجیتال توکن
