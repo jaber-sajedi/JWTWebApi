@@ -1,0 +1,50 @@
+.dashboard-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: 'Tahoma', sans-serif;
+  text-align: center;
+  direction: rtl;
+}
+
+.token-box {
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  word-break: break-word;
+  text-align: right;
+}
+
+.token-box pre {
+  background: #fff;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  direction: ltr;
+  overflow-x: auto;
+}
+
+.token-box button {
+  margin-top: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.back-button {
+  margin-top: 20px;
+  padding: 8px 14px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.no-token-text {
+  color: red;
+  margin-top: 1rem;
+}

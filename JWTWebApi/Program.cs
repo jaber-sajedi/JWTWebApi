@@ -64,9 +64,20 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") // آدرس frontend Vite
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+
 
 var app = builder.Build();
-
+app.UseCors();
 // پیکربندی pipeline
 if (app.Environment.IsDevelopment())
 {
